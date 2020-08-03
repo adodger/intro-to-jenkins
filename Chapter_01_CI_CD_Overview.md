@@ -81,3 +81,186 @@ To achieve continuous delivery you need:
 *We will cover this in a bit more detail later in this chapter.
 
 Incorporating Continuous Delivery practices will make your overall release process painless, reduce the time to market for new features, and increase the overall quality of software thereby leading to greater customer satisfaction. It can also significantly reduce your software development costs as your teams will prioritize releasing new features over debugging defects.
+
+## Continuous Deployment
+Oftentimes, the terms Continuous Delivery and Continuous Deployment are used synonymously by many, but in reality these concepts have a different meaning.
+
+While Continuous Delivery gives you the capability to deploy to production frequently, it does not necessarily mean that you are automating the deployment. You may need manual approval prior to deploying to production, or your business may not want to deploy frequently.
+
+Continuous Deployment, however, is an automated way of deploying your releases to production. You need to be doing continuous delivery in order to be able to perform automated deployment. Companies like Netflix, Amazon, Google, and Facebook automatically deploy to production multiple times a day.
+
+<img src="https://courses.edx.org/assets/courseware/v1/d470b2a1c6d1fa12330b5d671f2abac3/asset-v1:LinuxFoundationX+LFS167x+2T2020+type@asset+block/deliveryvsdeployment.png" alt="Continuous Integration, Continuous Delivery, Continuous Deployment" />
+
+#### Continuous Integration, Continuous Delivery, Continuous Deployment
+
+Whether you are doing Continuous Delivery or Continuous Deployment, you know by now that you need a deployment pipeline. Next, let us take look at what deployment pipeline is.
+
+## Deployment Pipelines
+Deployment pipelines (or Continuous Delivery pipelines) are the cornerstone of Continuous Delivery as they automate all the stages (build, test, release, etc.) of your software delivery process.
+
+There are numerous benefits to using Continuous Deployment pipelines. An automated pipeline allows all stakeholders to monitor the progress, eliminates the overhead of all the manual work, provides quick feedback, and more importantly builds confidence on the code quality.
+
+<img src="https://courses.edx.org/assets/courseware/v1/8b0aeb949c200eaabe8b0b6c89534381/asset-v1:LinuxFoundationX+LFS167x+2T2020+type@asset+block/basic-deployment-pipeline.png" alt="Continuous Delivery Pipeline (CDP)" />
+
+#### Continuous Delivery Pipeline (CDP)
+
+The deployment pipeline run starts with a developer committing source code change into a version control repository. The CI server detects the new commit, compiles the code, and runs unit tests. The next stage is deploying the artifacts (files generated from a build) to staging or a feature test environment where you run additional functional, regression, and acceptance tests. Once all the tests are successful, you are ready to deploy into production. In case of failure during any stage, the workflow stops and an immediate feedback is sent back to the developer.
+
+## Tools for Deployment Pipeline
+In order to automate the various stages of your deployment pipeline, you will need multiple tools. For example:
+
+* a version control system such as Git to store your source code
+* a Continuous Integration (CI) tool such as Jenkins to run automated builds
+* test frameworks such as xUnit, Selenium, etc., to run various test suites
+* a binary repository such as Artifactory to store build artifacts
+* configuration management tools such as Ansible
+* a single dashboard to make the progress visible to everyone
+* frequent feedback in the form of emails, or Slack notifications.
+
+And that’s not all. You will also need a single tool that can bring all these tools together to achieve CI/CD goals which is to automate software delivery.
+
+## CI/CD Tools
+There is a large number of open source (free) and enterprise (paid) CI/CD tools available in the market. Here is a matrix that compares some of the most popular CI/CD tools based on the type of offering (paid or free), licensing (open source or closed source), hosting (on-premise or cloud), and extensions/plugins.
+
+<table style="width: 800px; margin-left: auto; margin-right: auto; border: 2px solid white;" height="395" align="center" border="0">
+<tbody>
+<tr>
+<td style="font-size: 16px; padding-left: 15px; border: 2px solid white;" width="20%" align="padding-left" bgcolor="#003f60">
+<p align="padding-left"><span style="color: #ffffff;"><strong>CI/CD Tools</strong></span></p>
+</td>
+<td style="font-size: 16px; padding-left: 15px; border: 2px solid white;" width="20%" align="padding-left" bgcolor="#003f60">
+<p align="padding-left"><span style="color: #ffffff;"><strong>Feature: <br>Pricing</strong></span></p>
+</td>
+<td style="font-size: 16px; padding-left: 15px; border: 2px solid white;" width="20%" align="padding-left" bgcolor="#003f60">
+<p align="padding-left"><span style="color: #ffffff;"><strong>Feature: <br>Licensing</strong></span></p>
+</td>
+<td style="font-size: 16px; padding-left: 15px; border: 2px solid white;" width="20%" align="padding-left" bgcolor="#003f60">
+<p align="padding-left"><span style="color: #ffffff;"><strong>Feature:<br>Hosting</strong></span></p>
+</td>
+<td style="font-size: 16px; padding-left: 15px; border: 2px solid white;" width="20%" align="padding-left" bgcolor="#003f60">
+<p align="padding-left"><strong style="color: #ffffff;">Feature:&nbsp;<br>Extensions/<br>Plugins</strong></p>
+</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Atlassian Bamboo</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">**</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Bitbucket Pipelines</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Cloud/<br>On-premises</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">**</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>AWS CodePipeline</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">*</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Azure Pipelines</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">**</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Circle CI</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">***</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>CloudBees Core</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">*****</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>GitHub Actions</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">***</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>GitLab CI/CD</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Free/Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">OSS/Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">*</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Google Cloud Build</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">**</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Jenkins</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Free</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">OSS</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">*****</td>
+</tr>
+<tr>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">
+<p>Travis CI</p>
+</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Paid</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">Closed</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">On-premises/<br>Cloud</td>
+<td style="font-size: 16px; border: 2px solid white; padding-left: 15px;" bgcolor="#e8e8e8">***</td>
+</tr>
+</tbody>
+</table>
+
+Note: Stars depict the number of extensions or plugins. A single star implies a very low number and five stars indicate the highest number of extensions.
+
+## GitLab CI/CD vs Jenkins
+As you can see, there are only two free options, GitLab CI/CD and Jenkins. However, GitLab community edition does not give you the flexibility to use a version control repository of your choice and does not offer very many integrations through the plugins. On the other hand, Jenkins is a free and open source tool that has stood the test of time. It has been around for over 15 years. It has a large and active open source community constantly rolling out new releases, bug fixes, etc. There are many online sources (documentation, Google groups, etc.) for help.
+
+Jenkins can be installed on any operating system on-premise, or in cloud. Its solid integration with many other third tools makes it an excellent choice.
+
+<img src="https://courses.edx.org/assets/courseware/v1/b9d0dab26bf46bb6a9bb0da854cbe3c9/asset-v1:LinuxFoundationX+LFS167x+2T2020+type@asset+block/jenkins-automation-server.png" alt="Jenkins Automation Server" />
+
+#### Jenkins Automation Server
+
+## Summary
+By now, you should know:
+
+* Fundamentals of Continuous Integration, Continuous Delivery, and Continuous Deployment
+* Fundamentals of CI/CD pipelines
+* The value that CI/CD adds to your software delivery process
+* What tools are available for CI/CD
+* Why Jenkins is a good choice for your CI/CD workflow.
+
+In the next chapter, we will discuss how to get started with Jenkins.
