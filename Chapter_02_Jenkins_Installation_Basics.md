@@ -153,3 +153,47 @@ You are now ready to access Jenkins home page at ```http:<YOUR IP ADDRESS>:<PORT
 
 <img src="https://courses.edx.org/assets/courseware/v1/3db2040fcb407964ce108d2c505a6669/asset-v1:LinuxFoundationX+LFS167x+2T2020+type@asset+block/jenkins-ui.png" alt="accessing jenkins home page" />
 
+
+### Demo: Jenkins Installation - Ubuntu 
+```
+## https://www.jenkins.io/doc/book/installing/#debianubuntu
+
+$ sudo su                                         # change account to root
+$ apt-get update                                  # update package index
+
+# Java is a prerequisite for jenkins. Install Java
+$ apt-get install openjdk-11-jdk
+
+# install Jenkins. Import jenkins key
+$ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+# add the repo to the list of sources
+$ sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+# update package index
+$ sudo apt-get update
+
+# finally, install Jenkins package
+$ sudo apt-get install jenkins
+
+# verify Jenkins status
+$ systemctl status jenkins.service
+
+# Run Jenkins url on your browser.
+# The url should be <YOUR_IP>:8080/
+
+# Follow Getting Started screen to setup Administrator password and account
+
+# password will be found here: /var/lib/jenkins/secrets/initialAdminPassword
+$ cat /var/lib/jenkins/secrets/initialAdminPassword         # copy the password and use on the setup page
+
+# On install plugins, select 'Suggested Plugins'
+
+# Next is a screen to create Admin User
+
+# Next, you ll be asked the preferred url for your jenkins instance. Enter fully qualified name/ip of your server
+
+# click 'Save and Finish'
+
+```
+
