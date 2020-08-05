@@ -197,3 +197,11 @@ $ cat /var/lib/jenkins/secrets/initialAdminPassword         # copy the password 
 
 ```
 
+## Summary
+By now, you should know:
+
+* What are the prerequisites required to install Jenkins.
+* What are the various Jenkins distribution channels.
+* How to install Jenkins on a variety of operating systems.
+* How to unlock Jenkins, install essential plugins, and set up the first administrator user.
+* How to access your Jenkins UI.
